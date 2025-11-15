@@ -860,7 +860,7 @@
     <div class="tier-chip">Gift Card</div>
     <img
       class="item-image"
-      src="https://images.pexels.com/photos/1347246/pexels-photo-1347246.jpeg?auto=compress&cs=tinysrgb&w=800"
+      src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.bestbuy.com%2Fproduct%2Famazon-200-gift-card-digital%2FJJG34YQK7W&psig=AOvVaw1EHFLvIEJa-jA2m7v-77Qy&ust=1763251308312000&source=images&cd=vfe&opi=89978449&ved=0CBYQjRxqFwoTCICTw5Ht8pADFQAAAAAdAAAAABAE"
       alt="Amazon gift card"
     />
     <!-- no price tag here -->
@@ -893,63 +893,78 @@
     </footer>
   </div>
 
-  <script>
-    const filterButtons = document.querySelectorAll(".filter-btn");
-    const cards = document.querySelectorAll(".item-card");
-    const emptyState = document.getElementById("emptyState");
+<script>
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const cards = document.querySelectorAll(".item-card");
+  const emptyState = document.getElementById("emptyState");
 
-    function applyFilter(range) {
-      let visibleCount = 0;
+  function applyFilter(range) {
+    let visibleCount = 0;
 
-      cards.forEach(card => {
-        const price = parseFloat(card.dataset.price);
-        let show = false;
+    cards.forEach(card => {
+      const isGiftCard = card.dataset.category === "giftcard";
+      const rawPrice = card.dataset.price;
+      const price = rawPrice ? parseFloat(rawPrice) : null;
+      let show = false;
 
-        switch (range) {
-          case "all":
-            show = true;
-            break;
-          case "under20":
-            show = price < 20;
-            break;
-          case "20-40":
-            show = price >= 20 && price <= 40;
-            break;
-          case "40-60":
-            show = price > 40 && price <= 60;
-            break;
-          case "60-100":
-            show = price > 60 && price <= 100;
-            break;
-          case "100-200":
-            show = price > 100 && price <= 200;
-            break;
-          case "200plus":
-            show = price > 200;
-            break;
-        }
+      switch (range) {
+        case "all":
+          // show everything, including gift cards
+          show = true;
+          break;
 
-        if (show) {
-          card.style.display = "flex";
-          visibleCount++;
-        } else {
-          card.style.display = "none";
-        }
-      });
+        case "giftcards":
+          // only show cards marked as gift cards
+          show = isGiftCard;
+          break;
 
-      emptyState.style.display = visibleCount === 0 ? "block" : "none";
-    }
+        case "under20":
+          show = !isGiftCard && price !== null && price < 20;
+          break;
 
-    filterButtons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        // toggle active state
-        filterButtons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
+        case "20-40":
+          show = !isGiftCard && price !== null && price >= 20 && price <= 40;
+          break;
 
-        const range = btn.dataset.range;
-        applyFilter(range);
-      });
+        case "40-60":
+          show = !isGiftCard && price !== null && price > 40 && price <= 60;
+          break;
+
+        case "60-100":
+          show = !isGiftCard && price !== null && price > 60 && price <= 100;
+          break;
+
+        case "100-200":
+          show = !isGiftCard && price !== null && price > 100 && price <= 200;
+          break;
+
+        case "200plus":
+          show = !isGiftCard && price !== null && price > 200;
+          break;
+      }
+
+      if (show) {
+        card.style.display = "flex";
+        visibleCount++;
+      } else {
+        card.style.display = "none";
+      }
     });
-  </script>
+
+    emptyState.style.display = visibleCount === 0 ? "block" : "none";
+  }
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      filterButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const range = btn.dataset.range;
+      applyFilter(range);
+    });
+  });
+</script>
+
+  
 </body>
 </html>
