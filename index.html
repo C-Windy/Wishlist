@@ -2,17 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Chris's Wishlist</title>
+  <title>Chris's 2026 Christmas Wishlist 🎄</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b1020;
-      --card-bg: #151a2c;
-      --accent: #ffd36b;
-      --accent-soft: rgba(255, 211, 107, 0.15);
-      --text: #f4f4f7;
-      --muted: #9ca3af;
-      --border: #272e45;
+      --bg-top: #091c18;
+      --bg-bottom: #040d0b;
+      --card-bg: rgba(16, 40, 34, 0.88);
+      --card-hover: rgba(21, 52, 44, 0.96);
+      --red: #e63946;
+      --red-dark: #9e1b24;
+      --green: #2a9d8f;
+      --pine: #1b4332;
+      --gold: #ffd166;
+      --gold-glow: rgba(255, 209, 102, 0.35);
+      --snow: #f8fafc;
+      --muted: #b7c9c2;
+      --border: rgba(255, 209, 102, 0.22);
     }
 
     * {
@@ -21,48 +30,179 @@
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1b2340 0, #050712 60%, #020308 100%);
-      color: var(--text);
+      font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at top, #13382e 0%, var(--bg-top) 45%, var(--bg-bottom) 100%);
+      color: var(--snow);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Subtle Falling Snow Background */
+    .snow-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      color: rgba(255, 255, 255, 0.45);
+      user-select: none;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) translateX(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(110vh) translateX(25px) rotate(360deg);
+      }
+    }
+
+    /* Twinkling String Lights Bar */
+    .light-strand {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      padding: 10px 0 6px;
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+    }
+
+    .bulb {
+      width: 12px;
+      height: 18px;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      position: relative;
+      animation: twinkle 1.8s infinite alternate;
+    }
+
+    .bulb::before {
+      content: "";
+      position: absolute;
+      top: -4px;
+      left: 3px;
+      width: 6px;
+      height: 5px;
+      background: #2b2d42;
+      border-radius: 2px;
+    }
+
+    .bulb:nth-child(4n+1) { background: #ff4d5a; box-shadow: 0 0 14px #ff4d5a; animation-delay: 0s; }
+    .bulb:nth-child(4n+2) { background: #ffd166; box-shadow: 0 0 14px #ffd166; animation-delay: 0.4s; }
+    .bulb:nth-child(4n+3) { background: #06d6a0; box-shadow: 0 0 14px #06d6a0; animation-delay: 0.8s; }
+    .bulb:nth-child(4n+4) { background: #4cc9f0; box-shadow: 0 0 14px #4cc9f0; animation-delay: 1.2s; }
+
+    @keyframes twinkle {
+      0% { opacity: 0.45; transform: scale(0.92); }
+      100% { opacity: 1; transform: scale(1.08); }
     }
 
     .page {
-      max-width: 1080px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 24px 16px 48px;
+      padding: 16px 18px 56px;
+      position: relative;
+      z-index: 1;
     }
 
     header {
       text-align: center;
-      margin-bottom: 16px;
-    }
-
-    header h1 {
-      font-size: 2rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin: 0 0 8px;
-    }
-
-    header p {
-      margin: 0;
-      font-size: 0.95rem;
-      color: var(--muted);
+      margin-bottom: 22px;
+      padding: 24px 16px 20px;
+      background: linear-gradient(180deg, rgba(230, 57, 70, 0.14), rgba(16, 40, 34, 0.4));
+      border: 1px solid rgba(255, 209, 102, 0.25);
+      border-radius: 24px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(8px);
     }
 
     .tagline {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      font-size: 0.75rem;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--accent);
-      background: var(--accent-soft);
-      padding: 6px 12px;
+      letter-spacing: 0.16em;
+      color: var(--gold);
+      background: rgba(230, 57, 70, 0.25);
+      padding: 6px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 211, 107, 0.25);
+      border: 1px solid rgba(255, 209, 102, 0.4);
       margin-bottom: 10px;
+    }
+
+    header h1 {
+      font-family: "Mountains of Christmas", cursive;
+      font-size: 3.1rem;
+      letter-spacing: 0.03em;
+      margin: 0 0 8px;
+      color: #fff;
+      text-shadow: 0 4px 18px rgba(230, 57, 70, 0.55), 0 0 30px rgba(255, 209, 102, 0.25);
+    }
+
+    header p {
+      margin: 0 auto;
+      max-width: 600px;
+      font-size: 0.96rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Controls & Search */
+    .controls-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .search-box {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 11px 16px 11px 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 209, 102, 0.35);
+      background: rgba(11, 29, 25, 0.9);
+      color: var(--snow);
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .search-box input::placeholder {
+      color: #8ca39b;
+    }
+
+    .search-box input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 16px var(--gold-glow);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.95rem;
+      pointer-events: none;
     }
 
     .filters {
@@ -70,233 +210,313 @@
       flex-wrap: wrap;
       gap: 8px;
       justify-content: center;
-      margin: 12px 0;
     }
 
     .filter-btn {
       border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(17, 24, 39, 0.85);
-      padding: 8px 14px;
-      font-size: 0.8rem;
-      color: var(--muted);
+      border: 1px solid rgba(255, 209, 102, 0.25);
+      background: rgba(13, 35, 30, 0.88);
+      padding: 9px 15px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      font-family: inherit;
+      color: var(--snow);
       cursor: pointer;
-      transition: all 0.18s ease-out;
+      transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
 
     .filter-btn span {
-      opacity: 0.7;
-      font-size: 0.7rem;
+      opacity: 0.75;
+      font-size: 0.74rem;
+      font-weight: 400;
     }
 
     .filter-btn:hover {
-      border-color: rgba(255, 211, 107, 0.45);
-      transform: translateY(-1px);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+      background: rgba(22, 56, 48, 0.95);
     }
 
     .filter-btn.active {
-      background: linear-gradient(135deg, #fbbf24, #f97316);
-      color: #111827;
-      border-color: transparent;
-      box-shadow: 0 0 18px rgba(251, 191, 36, 0.35);
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      color: #fff;
+      border-color: var(--gold);
+      box-shadow: 0 4px 18px rgba(230, 57, 70, 0.45);
     }
 
+    .filter-btn.active span {
+      opacity: 0.95;
+      color: #ffe8e8;
+    }
+
+    .results-count {
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+
+    /* Wishlist Grid */
     .wishlist-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 16px;
-      margin-top: 12px;
+      grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
+      gap: 18px;
+      margin-top: 8px;
     }
 
     .item-card {
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(12, 18, 34, 0.96));
-      border-radius: 18px;
-      border: 1px solid rgba(55, 65, 81, 0.85);
+      background: var(--card-bg);
+      border-radius: 20px;
+      border: 1px solid var(--border);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
-      transform: translateY(0);
-      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+      position: relative;
+    }
+
+    /* Subtle Candy-Cane Accent Top Border */
+    .item-card::before {
+      content: "";
+      height: 4px;
+      width: 100%;
+      background: repeating-linear-gradient(
+        -45deg,
+        var(--red),
+        var(--red) 10px,
+        #ffffff 10px,
+        #ffffff 20px
+      );
+      opacity: 0.75;
     }
 
     .item-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 26px 55px rgba(15, 23, 42, 0.95);
-      border-color: rgba(251, 191, 36, 0.5);
+      transform: translateY(-5px);
+      background: var(--card-hover);
+      box-shadow: 0 22px 45px rgba(0, 0, 0, 0.75), 0 0 20px rgba(255, 209, 102, 0.18);
+      border-color: var(--gold);
     }
 
     .item-image-wrapper {
       position: relative;
-      padding: 10px;
-      background: radial-gradient(circle at top, rgba(251, 191, 36, 0.16), transparent 60%);
+      padding: 12px;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08), transparent 70%);
     }
 
     .item-image {
       width: 100%;
+      height: 195px;
       border-radius: 14px;
       display: block;
-      max-height: 190px;
       object-fit: contain;
-      background: #020617;
+      background: #ffffff;
+      padding: 8px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
     }
 
     .price-tag {
       position: absolute;
-      bottom: 16px;
-      left: 16px;
-      background: rgba(15, 23, 42, 0.92);
-      color: var(--accent);
-      padding: 4px 10px;
+      bottom: 18px;
+      left: 18px;
+      background: linear-gradient(135deg, #1b4332, #0b251c);
+      color: var(--gold);
+      font-weight: 700;
+      padding: 5px 12px;
       border-radius: 999px;
-      font-size: 0.75rem;
-      border: 1px solid rgba(251, 191, 36, 0.5);
-      backdrop-filter: blur(10px);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     }
 
     .tier-chip {
       position: absolute;
-      top: 14px;
-      right: 14px;
-      font-size: 0.7rem;
-      padding: 4px 9px;
+      top: 18px;
+      right: 18px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 4px 10px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--muted);
-      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(158, 27, 36, 0.92);
+      color: #fff;
+      border: 1px solid rgba(255, 209, 102, 0.55);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     }
 
     .item-body {
-      padding: 12px 14px 14px;
+      padding: 12px 16px 16px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
       flex-grow: 1;
     }
 
     .item-title {
-      font-size: 0.95rem;
+      font-size: 1rem;
+      font-weight: 700;
       margin: 0;
+      color: #fff;
+      line-height: 1.3;
     }
 
     .item-notes {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: var(--muted);
-      line-height: 1.4;
+      line-height: 1.45;
+      margin: 0;
     }
 
     .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-top: 4px;
+      margin-top: 2px;
     }
 
     .tag {
       font-size: 0.7rem;
-      padding: 3px 8px;
+      font-weight: 500;
+      padding: 3px 9px;
       border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      color: #e5e7eb;
-      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(255, 209, 102, 0.22);
+      color: #e2ece8;
+      background: rgba(9, 26, 22, 0.85);
     }
 
     .item-footer {
       margin-top: auto;
-      padding-top: 8px;
+      padding-top: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 8px;
-      font-size: 0.8rem;
     }
 
     .btn-link {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 6px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.8);
+      width: 100%;
+      padding: 9px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 209, 102, 0.45);
       text-decoration: none;
-      color: #e5e7eb;
-      font-size: 0.78rem;
-      background: rgba(15, 23, 42, 0.95);
-      transition: all 0.16s ease-out;
-      white-space: nowrap;
+      color: #111827;
+      font-weight: 700;
+      font-size: 0.82rem;
+      background: linear-gradient(135deg, #ffd166, #f4a261);
+      transition: all 0.18s ease;
+      box-shadow: 0 4px 12px rgba(255, 209, 102, 0.2);
     }
 
     .btn-link:hover {
-      border-color: var(--accent);
-      color: var(--accent);
+      background: linear-gradient(135deg, #ffe08a, #ffd166);
       transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(255, 209, 102, 0.4);
     }
 
     .empty-state {
       text-align: center;
       margin-top: 40px;
+      padding: 28px;
+      background: rgba(16, 40, 34, 0.7);
+      border-radius: 20px;
+      border: 1px dashed rgba(255, 209, 102, 0.35);
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       display: none;
     }
 
     footer {
-      margin-top: 32px;
+      margin-top: 40px;
+      padding: 18px;
       text-align: center;
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       color: var(--muted);
+      background: rgba(13, 35, 30, 0.65);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 209, 102, 0.18);
     }
 
     @media (max-width: 600px) {
       header h1 {
-        font-size: 1.45rem;
+        font-size: 2.3rem;
       }
       .page {
-        padding: 18px 12px 34px;
+        padding: 12px 12px 36px;
+      }
+      .light-strand {
+        gap: 18px;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- Gentle Falling Snowflakes -->
+  <div class="snow-container" id="snowContainer" aria-hidden="true"></div>
+
+  <!-- Festive String Lights -->
+  <div class="light-strand" aria-hidden="true">
+    <div class="bulb"></div><div class="bulb"></div><div class="bulb"></div><div class="bulb"></div>
+    <div class="bulb"></div><div class="bulb"></div><div class="bulb"></div><div class="bulb"></div>
+    <div class="bulb"></div><div class="bulb"></div><div class="bulb"></div><div class="bulb"></div>
+    <div class="bulb"></div><div class="bulb"></div><div class="bulb"></div><div class="bulb"></div>
+  </div>
+
   <div class="page">
     <header>
       <div class="tagline">
-        <span>☄️</span>
-        <span>Wishlist • 2026</span>
+        <span>🎄</span>
+        <span>Merry Christmas • 2026</span>
+        <span>🎅</span>
       </div>
-      <h1>Chris's Wishlist</h1>
+      <h1>Chris's Christmas Wishlist</h1>
       <p>
-        Pick anything you like — the price filters below just make it easier to browse.
-        No pressure on specific items.
+        Grab a cup of hot cocoa and browse around! Use the budget buttons or search bar below to filter ideas — zero pressure on specific items, anything is appreciated. 🎁
       </p>
     </header>
 
-    <!-- PRICE FILTERS -->
-    <div class="filters">
-      <button class="filter-btn active" data-range="all">
-        All
-        <span>show everything</span>
-      </button>
-      <button class="filter-btn" data-range="under20">
-        $
-      </button>
-      <button class="filter-btn" data-range="20-40">
-        $$
-      </button>
-      <button class="filter-btn" data-range="40-60">
-        $$$
-      </button>
-      <button class="filter-btn" data-range="60plus">
-        $$$$
-      </button>
-      <button class="filter-btn" data-range="giftcards">
-        Gift Cards
-      </button>
+    <!-- SEARCH & BUDGET FILTERS -->
+    <div class="controls-bar">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search gifts (e.g., Kitchen, Texas Tech, Garmin)..."
+          aria-label="Search wishlist items"
+        />
+      </div>
+
+      <div class="filters">
+        <button class="filter-btn active" data-range="all">
+          🎄 All Gifts <span>show all</span>
+        </button>
+        <button class="filter-btn" data-range="under20">
+          🧦 $ <span>Stocking Stuffers</span>
+        </button>
+        <button class="filter-btn" data-range="20-40">
+          🎁 $$ <span>Under $40</span>
+        </button>
+        <button class="filter-btn" data-range="40-60">
+          ✨ $$$ <span>$40 – $60</span>
+        </button>
+        <button class="filter-btn" data-range="60plus">
+          🎅 $$$$ <span>Big Gifts</span>
+        </button>
+        <button class="filter-btn" data-range="giftcards">
+          💳 Gift Cards
+        </button>
+      </div>
+
+      <div class="results-count" id="resultsCount"></div>
     </div>
 
     <!-- GRID -->
@@ -329,7 +549,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -362,7 +582,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -395,7 +615,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -428,7 +648,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -461,7 +681,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -494,7 +714,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -527,7 +747,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -560,7 +780,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -593,7 +813,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -626,7 +846,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -659,7 +879,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -692,7 +912,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -725,7 +945,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -758,7 +978,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -791,7 +1011,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -824,7 +1044,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -857,7 +1077,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -890,7 +1110,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -923,7 +1143,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -956,7 +1176,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -989,7 +1209,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -1022,7 +1242,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -1055,7 +1275,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -1088,7 +1308,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -1121,7 +1341,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View Product
+              🎁 View Gift
             </a>
           </div>
         </div>
@@ -1138,12 +1358,13 @@
             src="https://cdn-ssl.s7.shopdisney.com/is/image/DisneyShopping/9906055000035?fmt=webp&qlt=70&wid=1536&hei=1536"
             alt="Disney Gift Card"
           />
+          <div class="price-tag">$–$$$$</div>
         </div>
         <div class="item-body">
           <h2 class="item-title">Disney Gift Card</h2>
-          <p class="item-notes">Any amount is appreciated.</p>
+          <p class="item-notes">Any amount is appreciated! ✨</p>
           <div class="tags">
-            <span class="tag">Gift card</span>
+            <span class="tag">Gift Card</span>
           </div>
         </div>
       </article>
@@ -1157,12 +1378,13 @@
             src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6545/6545180_sd.jpg;maxHeight=1080;maxWidth=900?format=webp"
             alt="Amazon Gift Card"
           />
+          <div class="price-tag">$–$$$$</div>
         </div>
         <div class="item-body">
           <h2 class="item-title">Amazon Gift Card</h2>
-          <p class="item-notes">Any amount is appreciated.</p>
+          <p class="item-notes">Any amount is appreciated! 📦</p>
           <div class="tags">
-            <span class="tag">Gift card</span>
+            <span class="tag">Gift Card</span>
           </div>
         </div>
       </article>
@@ -1176,12 +1398,13 @@
             src="https://recharge-prd.asset.akeneo.cloud/product_assets/media/product_card_steam_gb_gbp.png"
             alt="Steam Gift Card"
           />
+          <div class="price-tag">$–$$$$</div>
         </div>
         <div class="item-body">
           <h2 class="item-title">Steam Gift Card</h2>
-          <p class="item-notes">Any amount is appreciated.</p>
+          <p class="item-notes">Any amount is appreciated! 🎮</p>
           <div class="tags">
-            <span class="tag">Gift card</span>
+            <span class="tag">Gift Card</span>
           </div>
         </div>
       </article>
@@ -1195,12 +1418,13 @@
             src="https://uvahs.myshopify.com/cdn/shop/products/UVAHSPRO085_large.jpg?v=1504645090"
             alt="Target Gift Card"
           />
+          <div class="price-tag">$–$$$$</div>
         </div>
         <div class="item-body">
           <h2 class="item-title">Target Gift Card</h2>
-          <p class="item-notes">Any amount is appreciated.</p>
+          <p class="item-notes">Any amount is appreciated! 🎯</p>
           <div class="tags">
-            <span class="tag">Gift card</span>
+            <span class="tag">Gift Card</span>
           </div>
         </div>
       </article>
@@ -1214,12 +1438,13 @@
             src="https://www.cardbear.com/img/large/Wingstop-gift-card.png"
             alt="Wingstop Gift Card"
           />
+          <div class="price-tag">$–$$$$</div>
         </div>
         <div class="item-body">
           <h2 class="item-title">Wingstop Gift Card</h2>
-          <p class="item-notes">Any amount is appreciated.</p>
+          <p class="item-notes">Any amount is appreciated! 🍗</p>
           <div class="tags">
-            <span class="tag">Gift card</span>
+            <span class="tag">Gift Card</span>
           </div>
         </div>
       </article>
@@ -1233,12 +1458,13 @@
             src="https://i.ebayimg.com/images/g/7XoAAOSwHyxm05BI/s-l1200.jpg"
             alt="Chick-Fil-A Gift Card"
           />
+          <div class="price-tag">$–$$$$</div>
         </div>
         <div class="item-body">
           <h2 class="item-title">Chick-Fil-A Gift Card</h2>
-          <p class="item-notes">Any amount is appreciated.</p>
+          <p class="item-notes">Any amount is appreciated! 🥪</p>
           <div class="tags">
-            <span class="tag">Gift card</span>
+            <span class="tag">Gift Card</span>
           </div>
         </div>
       </article>
@@ -1252,12 +1478,13 @@
             src="https://i5.walmartimages.com/asr/fed43e8e-27aa-4033-a7bf-e8c062882f50.2d66758f1c54b1fbb8eeca58e211c604.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF"
             alt="Little Caesars Gift Card"
           />
+          <div class="price-tag">$–$$$$</div>
         </div>
         <div class="item-body">
           <h2 class="item-title">Little Caesars Gift Card</h2>
-          <p class="item-notes">Any amount is appreciated.</p>
+          <p class="item-notes">Any amount is appreciated! 🍕</p>
           <div class="tags">
-            <span class="tag">Gift card</span>
+            <span class="tag">Gift Card</span>
           </div>
         </div>
       </article>
@@ -1271,12 +1498,13 @@
             src="https://m.media-amazon.com/images/I/41PZMShltQL.jpg"
             alt="Dominos Gift Card"
           />
+          <div class="price-tag">$–$$$$</div>
         </div>
         <div class="item-body">
           <h2 class="item-title">Dominos Gift Card</h2>
-          <p class="item-notes">Any amount is appreciated.</p>
+          <p class="item-notes">Any amount is appreciated! 🍕</p>
           <div class="tags">
-            <span class="tag">Gift card</span>
+            <span class="tag">Gift Card</span>
           </div>
         </div>
       </article>
@@ -1290,12 +1518,13 @@
             src="https://images.media.gianteagle.com/00400505991993-5428642d-8308-440a-821e-ddcf8fab6a85.png?auto=format%2Ccompress&fill=solid&fit=fill&h=600&q=92&w=600"
             alt="Pizza Hut Gift Card"
           />
+          <div class="price-tag">$–$$$$</div>
         </div>
         <div class="item-body">
           <h2 class="item-title">Pizza Hut Gift Card</h2>
-          <p class="item-notes">Any amount is appreciated.</p>
+          <p class="item-notes">Any amount is appreciated! 🍕</p>
           <div class="tags">
-            <span class="tag">Gift card</span>
+            <span class="tag">Gift Card</span>
           </div>
         </div>
       </article>
@@ -1303,20 +1532,38 @@
     </section>
 
     <div class="empty-state" id="emptyState">
-      Nothing in that price range yet — try a different filter.
+      ❄️ No gifts matched that search or price range — try clearing your search or picking another filter!
     </div>
 
     <footer>
-      If you’re not sure what to pick, feel free to ask me directly — I’m easy.
+      🎄 Merry Christmas & Happy Holidays! If you’re not sure what to pick, feel free to ask me directly — I’m easy. 🎁
     </footer>
   </div>
 
 <script>
+  // Create subtle falling snowflakes
+  const snowContainer = document.getElementById("snowContainer");
+  const flakeSymbols = ["❄", "❅", "❆", "•"];
+  for (let i = 0; i < 32; i++) {
+    const flake = document.createElement("div");
+    flake.className = "snowflake";
+    flake.textContent = flakeSymbols[Math.floor(Math.random() * flakeSymbols.length)];
+    flake.style.left = Math.random() * 100 + "vw";
+    flake.style.fontSize = (Math.random() * 10 + 9) + "px";
+    flake.style.animationDuration = (Math.random() * 8 + 7) + "s";
+    flake.style.animationDelay = (Math.random() * 8) + "s";
+    snowContainer.appendChild(flake);
+  }
+
+  // Filter & Search Logic
   const filterButtons = document.querySelectorAll(".filter-btn");
   const cards = document.querySelectorAll(".item-card");
   const emptyState = document.getElementById("emptyState");
+  const searchInput = document.getElementById("searchInput");
+  const resultsCount = document.getElementById("resultsCount");
 
   let currentRange = "all";
+  let searchQuery = "";
 
   function applyFilter() {
     let visibleCount = 0;
@@ -1325,30 +1572,33 @@
       const isGiftCard = card.dataset.category === "giftcard";
       const rawPrice = card.dataset.price;
       const price = rawPrice ? parseFloat(rawPrice) : null;
-      let show = false;
+      const cardText = card.textContent.toLowerCase();
+      let matchesRange = false;
 
       switch (currentRange) {
         case "all":
-          show = true;
+          matchesRange = true;
           break;
         case "giftcards":
-          show = isGiftCard;
+          matchesRange = isGiftCard;
           break;
         case "under20":
-          show = !isGiftCard && price !== null && price < 20;
+          matchesRange = !isGiftCard && price !== null && price < 20;
           break;
         case "20-40":
-          show = !isGiftCard && price !== null && price >= 20 && price <= 40;
+          matchesRange = !isGiftCard && price !== null && price >= 20 && price <= 40;
           break;
         case "40-60":
-          show = !isGiftCard && price !== null && price > 40 && price <= 60;
+          matchesRange = !isGiftCard && price !== null && price > 40 && price <= 60;
           break;
         case "60plus":
-          show = !isGiftCard && price !== null && price >= 60;
+          matchesRange = !isGiftCard && price !== null && price >= 60;
           break;
       }
 
-      if (show) {
+      const matchesSearch = !searchQuery || cardText.includes(searchQuery);
+
+      if (matchesRange && matchesSearch) {
         card.style.display = "flex";
         visibleCount++;
       } else {
@@ -1357,6 +1607,7 @@
     });
 
     emptyState.style.display = visibleCount === 0 ? "block" : "none";
+    resultsCount.textContent = `Showing ${visibleCount} ${visibleCount === 1 ? "gift" : "gifts"}`;
   }
 
   filterButtons.forEach(btn => {
@@ -1366,6 +1617,11 @@
       currentRange = btn.dataset.range;
       applyFilter();
     });
+  });
+
+  searchInput.addEventListener("input", (e) => {
+    searchQuery = e.target.value.trim().toLowerCase();
+    applyFilter();
   });
 
   applyFilter();
